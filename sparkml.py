@@ -27,20 +27,21 @@ assembled_df = assembler.transform(grades_df).select("features", "writing_score"
 # Step 5: Split the data into training and testing sets
 train_data, test_data = assembled_df.randomSplit([0.7, 0.3])
 
-# Save to HDFS (change the path to something you have write access to)
-output_path = "hdfs:///tmp/week11_final_project_output"
-train_data.saveAsTextFile(output_path)
+print("I AM HERE!!!DAN DOAN!!!")
+print("PRINTING TRAIN DATA BELOW!!!")
+print(train_data)
 
 # Step 6: Initialize and train a Linear Regression model
 # lr = LinearRegression(labelCol="final_score")
 lr = LinearRegression(labelCol="writing_score")
 lr_model = lr.fit(train_data)
 
-lr_model.saveAsTextFile(output_path)
-
 # Step 7: Evaluate the model on the test data
 test_results = lr_model.evaluate(test_data)
 
+
+print("I AM HERE!!!DAN DOAN!!!")
+print("PRINTING MODEL PERFORMANCE EVALUATION METRICS BELOW!!!")
 # Step 8: Print the model performance metrics
 print(f"RMSE: {test_results.rootMeanSquaredError}")
 print(f"R^2: {test_results.r2}")
