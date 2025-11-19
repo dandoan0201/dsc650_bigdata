@@ -30,6 +30,7 @@ train_data, test_data = assembled_df.randomSplit([0.7, 0.3])
 print("I AM HERE!!!DAN DOAN!!!")
 print("PRINTING TRAIN DATA BELOW!!!")
 print(train_data)
+train_data.show()
 
 # Step 6: Initialize and train a Linear Regression model
 # lr = LinearRegression(labelCol="final_score")
