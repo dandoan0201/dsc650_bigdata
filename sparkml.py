@@ -66,5 +66,9 @@ def write_to_hbase_partition(partition):
 rdd = spark.sparkContext.parallelize(data)
 rdd.foreachPartition(write_to_hbase_partition)
 
+# Save to HDFS (change the path to something you have write access to)
+output_path = "hdfs:///tmp/week11_final_project_output"
+transformed.saveAsTextFile(output_path)
+
 # Step 9: Stop the Spark session
 spark.stop()
